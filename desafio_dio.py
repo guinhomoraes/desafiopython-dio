@@ -178,12 +178,12 @@ class Deposito(Transacao):
 def menu():
     menu = """\n
     ================ MENU ================
-    [d]\tDepositar
-    [s]\tSacar
-    [e]\tExtrato
-    [nc]\tNova conta
-    [lc]\tListar contas
-    [nu]\tNovo usuário
+    [d]\tDepositar Dinheiro
+    [s]\tSacar Dinheiro
+    [e]\tExtrato da Conta
+    [nc]\tCriar Nova conta
+    [lc]\tListar contas existentes
+    [nu]\tCriar Novo usuário
     [q]\tSair
     => """
     return input(textwrap.dedent(menu))
@@ -196,7 +196,7 @@ def filtrar_cliente(cpf, clientes):
 
 def recuperar_conta_cliente(cliente):
     if not cliente.contas:
-        print("\n@@@ Cliente não possui conta! @@@")
+        print("\n@@@ Cliente não possui conta nesse banco! @@@")
         return
 
     # FIXME: não permite cliente escolher a conta
@@ -226,7 +226,7 @@ def sacar(clientes):
     cliente = filtrar_cliente(cpf, clientes)
 
     if not cliente:
-        print("\n@@@ Cliente não encontrado! @@@")
+        print("\n@@@ Cliente não encontrado! Tente novamente @@@")
         return
 
     valor = float(input("Informe o valor do saque: "))
